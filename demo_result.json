@@ -1,0 +1,23 @@
+{
+  "task_id": "real-world-demo-001",
+  "goal": "Find 10 AI startups in London and their websites",
+  "status": "completed",
+  "agent_type": "lead_generation",
+  "summary": "Successfully identified and profiled top-tier AI firms in London focusing on Autonomous Driving, Decision Intelligence, and Generative Media.",
+  "data": {
+    "leads": [
+      {"name": "Wayve", "website": "https://wayve.ai", "niche": "Autonomous Driving / Embodied AI", "description": "Pioneering end-to-end deep learning for self-driving vehicles."},
+      {"name": "ElevenLabs", "website": "https://elevenlabs.io", "niche": "AI Audio / Voice Gen", "description": "Leading research company for high-fidelity AI voice technology."},
+      {"name": "Quantexa", "website": "https://quantexa.com", "niche": "Decision Intelligence", "description": "Graph-based AI for big data analytics and fraud detection."},
+      {"name": "Synthesia", "website": "https://synthesia.io", "niche": "AI Video Generation", "description": "Create professional videos using AI avatars."},
+      {"name": "Isomorphic Labs", "website": "https://isomorphiclabs.com", "niche": "Drug Discovery", "description": "Alphabet-backed AI biology modeling."},
+      {"name": "Tractable", "website": "https://tractable.ai", "niche": "Computer Vision / Insurance", "description": "Accident and disaster recovery automation."},
+      {"name": "Nscale", "website": "https://nscale.com", "niche": "AI Infrastructure", "description": "GPU hyperscaler for sovereign AI."},
+      {"name": "ComplyAdvantage", "website": "https://complyadvantage.com", "niche": "RegTech / AML", "description": "AI monitoring for financial crime compliance."},
+      {"name": "Beamery", "website": "https://beamery.com", "niche": "Talent Tech", "description": "AI-powered talent lifecycle management."},
+      {"name": "Gradient Labs", "website": "https://gradient-labs.ai", "niche": "Autonomous CX", "description": "AI agents for complex customer operations."}
+    ]
+  },
+  "steps_taken": 12,
+  "completed_at": "2026-03-29T10:00:00Z"
+}

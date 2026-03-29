@@ -1,0 +1,84 @@
+services:
+  # ─── API Server ─────────────────────────────────────────────
+  - type: web
+    name: goatraw-api
+    runtime: python
+    region: singapore          # Change to oregon if targeting US
+    plan: starter              # $7/mo — upgrade to standard for production
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT --workers 2"
+    rootDir: backend
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: goatraw-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: goatraw-redis
+          type: redis
+          property: connectionString
+      - key: GROQ_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: WHATSAPP_ACCESS_TOKEN
+        sync: false
+      - key: WHATSAPP_PHONE_NUMBER_ID
+        sync: false
+      - key: SERPAPI_KEY
+        sync: false
+    healthCheckPath: /health/
+
+  # ─── Background Worker ──────────────────────────────────────
+  - type: worker
+    name: goatraw-worker
+    runtime: python
+    plan: starter
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python -m app.worker_v2"
+    rootDir: backend
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: goatraw-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: goatraw-redis
+          type: redis
+          property: connectionString
+      - fromGroup: goatraw-secrets
+
+  # ─── Redis ──────────────────────────────────────────────────
+  - type: redis
+    name: goatraw-redis
+    plan: starter              # Free tier on Render
+    maxmemoryPolicy: allkeys-lru
+
+databases:
+  - name: goatraw-db
+    databaseName: goatraw
+    plan: starter              # $7/mo, upgrade to standard for production
+
+envVarGroups:
+  - name: goatraw-secrets
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: SLACK_BOT_TOKEN
+        sync: false
+      - key: WHATSAPP_ACCESS_TOKEN
+        sync: false
+      - key: WHATSAPP_PHONE_NUMBER_ID
+        sync: false
+      - key: SERPAPI_KEY
+        sync: false
