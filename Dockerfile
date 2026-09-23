@@ -1,8 +1,10 @@
+# GoatRaw backend — production image
+# The FastAPI app lives in backend/ (main.py); it needs Postgres + Redis at runtime.
 FROM python:3.10-slim
 WORKDIR /app
-COPY requirements.txt ./
+COPY backend/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
+COPY backend/ ./
 ENV PYTHONUNBUFFERED=1
 EXPOSE 8000
-CMD ["python", "main.py"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
