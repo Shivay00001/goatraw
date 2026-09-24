@@ -5,7 +5,7 @@ POST /users/login
 GET  /users/me
 """
 
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, EmailStr, Field
 import bcrypt
 import jwt

@@ -19,17 +19,6 @@ class Output(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 
-class AgentLog(Base):
-    __tablename__ = "agent_logs"
-
-    id          = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    task_id     = Column(UUID(as_uuid=True), ForeignKey("tasks.id"), nullable=False, index=True)
-    step_number = Column(Integer)
-    log_type    = Column(String(50))   # plan|tool_call|tool_result|thought|output
-    content     = Column(JSONB)
-    created_at  = Column(DateTime(timezone=True), server_default=func.now())
-
-
 class ApiUsage(Base):
     __tablename__ = "api_usage"
 
