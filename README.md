@@ -1,5 +1,7 @@
 # Goatraw
 
+Built by [VisionQuantech](https://visionquantech.com) — AI agents, apps & tools for small businesses.
+
 GoatRaw v2 — Autonomous AI Agent SaaS Platform. Multi-tenant cloud execution system with memory, custom skills, and scheduling. Self-hostable. Commercial license available.
 
 ![Language](https://img.shields.io/badge/Language-Python-blue)
